@@ -1,0 +1,47 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storage": {
+            "type": "string",
+            "metadata": {
+                "description": "storage account data"
+            },
+            "maxLength": 24,
+            "minLength": 3
+        },
+        "sku": {
+            "type": "string",
+            "metadata": {
+                "description": "sku data"
+            },
+            "allowedValues":  [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Standard_ZRS",
+        "Standard_GZRS",
+        "Standard_RAGZRS"
+      ]
+        }
+ 
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [{
+        "name": "[parameters('storage')]",
+        "type": "Microsoft.Storage/storageAccounts",
+        "apiVersion": "2019-06-01",
+        "tags": {
+            "displayName": "storageaccount1"
+        },
+        "location": "[resourceGroup().location]",
+        "kind": "StorageV2",
+        "sku": {
+            "name": "[parameters('sku')]",
+            "tier": "Premium"
+        }
+    }],
+    "outputs": {}
+    
+}

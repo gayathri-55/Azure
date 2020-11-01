@@ -1,0 +1,32 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "workspacename":{
+            "type": "string",
+            "metadata": {
+                "description":"workspace name"
+            }
+        }
+    },
+    "functions": [],
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.MachineLearning/workspaces",
+            "apiVersion": "2016-04-01",
+            "name": "[parameters('workspacename')]",
+            "location": "[resourceGroup().location]",
+            "sku":{
+                "name":"basic",
+                "tier":"basic"
+                },
+                "properties":{
+                    "userStorageAccountId":"/subscriptions/a248d509-bdc8-4664-a863-f6f761a07821/resourceGroups/testrs/providers/Microsoft.Storage/storageAccounts/str05",
+                    "ownerEmail": "gayathri.nusimala@dxc.com"               
+                }
+        }
+
+        ],
+    "outputs": {}
+}
